@@ -15,7 +15,7 @@ setup(
           'numpy',
           'sklearn',
       ],
-  long_description="""# Markdown supported!\n\n* Cheer\n* Celebrate\n""",
+  long_description=read_file('README.md'),,
   long_description_content_type='text/markdown'
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
