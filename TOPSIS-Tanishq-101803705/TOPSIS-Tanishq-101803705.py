@@ -85,7 +85,7 @@ def checkInputFile():
     return True
 
 
-def calculateTopsis(dfin, weights, impacts):
+def finalTopsis(dfin, weights, impacts):
     
     
     L = [dfin.T.values[0]]
@@ -165,11 +165,14 @@ def outputFile(df):
     
 
 # print(sys.argv)
+def calculateTopsis():
+    pass
+
 
 if __name__ == '__main__':
-    if(not checkArguments()):
+    if(not checkArguments(True)):
         sys.exit(0)
-    if(not checkInputFile()):
+    if(not checkInputFile(True)):
         sys.exit(0)
     
     inputDF = pd.read_csv(sys.argv[1])
@@ -177,6 +180,6 @@ if __name__ == '__main__':
     if(not (checkString(sys.argv[2], inputDF.shape[1] - 1, 'weight') or checkString(sys.argv[3], inputDF.shape[1], 'impact'))):
         sys.exit(0)
     
-    outputDF = calculateTopsis(inputDF, pd.Series(sys.argv[2].split(',')).astype(int), pd.Series(sys.argv[3].split(',')))
+    outputDF = finalTopsis(inputDF, pd.Series(sys.argv[2].split(',')).astype(int), pd.Series(sys.argv[3].split(',')))
     
     outputFile(outputDF)
